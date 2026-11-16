@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ProfitFlow - Expense & Profit Analysis</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar / Header -->
+        <header>
+            <h1>📈 ProfitFlow</h1>
+            <p>Daily Expenses & Business Profit Analysis</p>
+        </header>
+
+        <!-- Metrics Overview Cards -->
+        <section class="metrics-grid">
+            <div class="card">
+                <h3>Total Revenue</h3>
+                <p id="total-revenue">$0.00</p>
+            </div>
+            <div class="card">
+                <h3>Total Expenses</h3>
+                <p id="total-expenses">$0.00</p>
+            </div>
+            <div class="card profit-card">
+                <h3>Net Profit</h3>
+                <p id="net-profit">$0.00</p>
+            </div>
+        </section>
+
+        <!-- Forms Section -->
+        <section class="forms-section">
+            <div class="form-card">
+                <h2>Add Transaction</h2>
+                <form id="transaction-form">
+                    <div class="input-group">
+                        <label for="type">Type</label>
+                        <select id="type" required>
+                            <option value="income">Revenue / Income</option>
+                            <option value="expense">Expense</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label for="category">Category</label>
+                        <input type="text" id="category" placeholder="e.g., Inventory, Marketing" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="amount">Amount ($)</label>
+                        <input type="number" id="amount" step="0.01" placeholder="0.00" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="date">Date</label>
+                        <input type="date" id="date" required>
+                    </div>
+                    <button type="submit" class="btn-primary">Add Entry</button>
+                </form>
+            </div>
+
+            <!-- Charts Section -->
+            <div class="chart-card">
+                <h2>Profit & Expense Breakdown</h2>
+                <canvas id="profitChart"></canvas>
+            </div>
+        </section>
+
+        <!-- Transactions History -->
+        <section class="history-section">
+            <h2>Recent Transactions</h2>
+            <table id="transaction-table">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Type</th>
+                        <th>Category</th>
+                        <th>Amount</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="transaction-list">
+                    <!-- Dynamic rows injected via JS -->
+                </tbody>
+            </table>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
